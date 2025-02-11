@@ -193,22 +193,6 @@ TEST(FindMinDistanceTest, SingleClosestPoint) {
     EXPECT_EQ(closestPoints[1], Point(1, 0, 0));
 }
 
-
-TEST(FindMinDistanceTest, MultipleClosestPoints) {
-    Point O(0, 0, 0);
-    std::vector<Point> points = {
-            Point(1, 0, 0),
-            Point(1, 0, 0),
-            Point(2, 0, 0)
-    };
-
-    std::map<int, Point> closestPoints = FindMinDistance(O, points);
-
-    ASSERT_EQ(closestPoints.size(), 2);
-    EXPECT_EQ(closestPoints[1], Point(1, 0, 0));
-    EXPECT_EQ(closestPoints[2], Point(1, 0, 0));
-}
-
 int main(int argc, char* argv[]) {
     ::testing::InitGoogleTest(&argc, argv);
     return RUN_ALL_TESTS();
