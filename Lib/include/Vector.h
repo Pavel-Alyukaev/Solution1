@@ -16,6 +16,10 @@ public:
     [[nodiscard]] Vector normalized() const;
     [[nodiscard]] Point toPoint() const;
 
+    [[nodiscard]] double getX() const;
+    [[nodiscard]] double getY() const;
+    [[nodiscard]] double getZ() const;
+
 private:
     double m_x, m_y, m_z;
 };

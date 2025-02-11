@@ -1,4 +1,4 @@
-
+#include "Tmp.h"
 Tmp::Tmp(const Point& A, const Point& B, const Point& T)
         : m_A(A), m_B(B), m_T(T) {}
 

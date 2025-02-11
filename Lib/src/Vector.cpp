@@ -1,3 +1,5 @@
+#include "Vector.h"
+
 Vector::Vector(double x, double y, double z) : m_x(x), m_y(y), m_z(z) {}
 
 Vector::Vector(const Point& a, const Point& b)
@@ -38,3 +40,16 @@ Vector Vector::normalized() const {
 Point Vector::toPoint() const {
     return {m_x, m_y, m_z};
 }
+
+double Vector::getX() const {
+    return m_x;
+}
+
+double Vector::getY() const {
+    return m_y;
+}
+
+double Vector::getZ() const {
+    return m_z;
+}
+

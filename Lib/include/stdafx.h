@@ -1,6 +1,5 @@
 #pragma once
 
-// Стандартные заголовки
 #include <iostream>
 #include <vector>
 #include <cmath>
@@ -9,3 +8,5 @@
 #include <algorithm>
 #include <format>
 #include <limits>
+#include <optional>
+

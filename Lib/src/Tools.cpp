@@ -1,3 +1,8 @@
+#include "Tools.h"
+#include "Tmp.h"
+#include "Point.h"
+
+
 std::vector<Point> readPointsFromFile(const std::string& filename) {
     std::ifstream file(filename);
     std::vector<Point> points;
@@ -16,23 +21,22 @@ std::vector<Point> readPointsFromFile(const std::string& filename) {
     return points;
 }
 
-int main(int argc, char* argv[])
-{
-    if (argc != 5) {
-        std::cerr << "Using: " << argv[0] << " <path_to_file> <x> <y> <z>" << std::endl;
-        return 1;
+std::optional<Point> getPoint(char *const *argv) {
+    double x, y, z;
+    try {
+        x = std::stod(argv[2]);
+        y = std::stod(argv[3]);
+        z = std::stod(argv[4]);
+    }
+    catch (std::invalid_argument ex)
+    {
+        return std::nullopt;
     }
 
-    std::string filePath = argv[1];
-    double x = std::stod(argv[2]);
-    double y = std::stod(argv[3]);
-    double z = std::stod(argv[4]);
-
     const Point O{x, y, z};
-
-    std::vector<Point> points = readPointsFromFile(filePath);
-
-
+    return O;
+}
+std::map<int, Point> FindMinDistance(const Point &O, const std::vector<Point> &points) {
     std::map<int, Point> closestPoints;
     double minDistance = std::numeric_limits<double>::max();
     const double epsilon = std::numeric_limits<double>::epsilon();
@@ -48,10 +52,5 @@ int main(int argc, char* argv[])
             closestPoints.emplace(i, point);
         }
     }
-
-    for (const auto& [index, point] : closestPoints) {
-        std::cout << "segment " << index << " point " << point.toString() << std::endl;
-    }
-
-    return 0;
+    return closestPoints;
 }
